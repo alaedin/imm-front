@@ -1,0 +1,21 @@
+<div style="">
+  <div class="submit-form">
+    <div *ngIf="!submitted">
+      <div class="form-group">
+        <label for="houseTypeName">House type name</label>
+        <input
+          type="text"
+          class="form-control"
+          id="houseTypeName"
+          required[(ngModel)]="houseType.houseTypeName"
+          name="houseTypeName"
+        >
+      </div>
+      <button (click)="saveHouseType()" class="btn btn-success">Submit</button>
+    </div>
+    <div *ngIf="submitted">
+      <h4>House Type Added !</h4>
+      <button class="btn btn-success" (click)="newHouseType()">Add</button>
+    </div>
+  </div>
+</div>

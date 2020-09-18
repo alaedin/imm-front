@@ -7,4 +7,7 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'imm-front';
+  //color: ThemePalette = 'accent';
+  checked = false;
+  disabled = false;
 }
