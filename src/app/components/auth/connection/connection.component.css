@@ -1,5 +1,47 @@
 .inner-div {
-  margin: 10% auto 0;
+  margin: 10% auto;
   width: 25%;
   height: 50%;
+  border: solid slategrey;
+  /* top-left top-right bottom-right bottom-left */
+  border-radius: 10px 15px 15px 10px;
+  background-color: #00897b;
+}
+
+.container {
+  background-color: #ffffff;
+}
+
+.after-div {
+
+
+  position: absolute;
+  margin: -20px;
+  width: 40px;
+  height: 40px;
+  transform: rotate(45deg);
+  background-color: slategrey; /* to see where it is */
+  clip-path: polygon(
+    0 10%,
+    10% 0,
+    90% 0,
+    100% 10%,
+    100% 90%,
+    90% 100%,
+    10% 100%,
+    0% 90%,
+    0% 10%
+  )
+}
+
+[aria-label=primary] {
+  background-color: blue;
+}
+
+[aria-label=accent] {
+  background-color: aqua;
+}
+
+.mat-tab-group-color {
+  background-color: #D2B48C !important;
 }

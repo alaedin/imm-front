@@ -1,16 +1,23 @@
 <div class="global">
   <div class="middle">
-    <mat-form-field>
-      <mat-label>Username</mat-label>
-      <input matInput type="text" [(ngModel)]="loginForm.username">
 
-    </mat-form-field>
-    <mat-form-field>
-      <mat-label>Password</mat-label>
-      <input matInput type="password" [(ngModel)]="loginForm.password">
-    </mat-form-field>
+    <div>
+      <mat-icon>supervised_user_circle</mat-icon>
 
-    <a mat-button href>forgot password!</a>
+      <mat-form-field>
+        <mat-label>Username</mat-label>
+        <input matInput type="text" [(ngModel)]="loginForm.username">
+      </mat-form-field>
+    </div>
+    <div>
+      <mat-icon>verified_user</mat-icon>
+      <mat-form-field>
+        <mat-label>Password</mat-label>
+        <input matInput type="password" [(ngModel)]="loginForm.password">
+      </mat-form-field>
+
+      <a mat-button href>forgot password!</a>
+    </div>
     <button class="btn btn-round color-1 material-design" (click)=authenticate()>
       Connexion
     </button>

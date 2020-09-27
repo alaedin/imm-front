@@ -3,11 +3,10 @@ import {SingUpForm} from '../../../model/sing-up-form';
 import {FormControl, Validators} from '@angular/forms';
 import {RoleService} from '../../../services/role/role.service';
 import {Role} from '../../../entity/role';
-import {UserService} from '../../../services/user/user.service';
 import {Router} from '@angular/router';
 import {interval} from 'rxjs';
-import {MatSnackBar, MatSnackBarHorizontalPosition, MatSnackBarVerticalPosition} from '@angular/material/snack-bar';
 import {MatSnackBarComponent} from '../../utils/mat-snack-bar/mat-snack-bar.component';
+import {AuthService} from '../../../config/auth-service';
 
 
 @Component({
@@ -25,7 +24,7 @@ export class RegisterComponent implements OnInit {
 
 
   constructor(private roleService: RoleService,
-              private userService: UserService,
+              private userService: AuthService,
               private router: Router,
               private snackBar: MatSnackBarComponent) {
   }
@@ -54,7 +53,7 @@ export class RegisterComponent implements OnInit {
     this.singUpForm.email = this.emailFormControl.value;
     this.singUpForm.role.push(this.selectedRole);
     console.log(JSON.stringify(this.singUpForm));
-    this.userService.create(this.singUpForm)
+    this.userService.signUp(this.singUpForm)
       .subscribe(
         response => {
 

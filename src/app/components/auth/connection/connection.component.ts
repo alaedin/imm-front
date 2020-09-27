@@ -1,4 +1,4 @@
-import {AfterViewInit, Component, OnChanges, OnInit, ViewChild} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Role} from '../../../entity/role';
 import {HttpClient} from '@angular/common/http';
 
@@ -19,7 +19,7 @@ export class ConnectionComponent implements OnInit {
     this.getAllRole();
   }
 
-  updateConnexionButton(tabSelected) {
+  updateConnexionButton(tabSelected): string {
     if (tabSelected === 0) {
       return this.tabConnexion[0];
     } else {

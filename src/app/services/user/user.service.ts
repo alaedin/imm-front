@@ -17,12 +17,7 @@ export class UserService {
     return this.httpClient.get(baseUrl);
   }
 
-  create(data): Observable<any> {
-    return this.httpClient.post(`${baseUrl}/sign-up`, data);
-  }
 
-  authentiction(data): Observable<any> {
-    return this.httpClient.post(`${baseUrl}/sign-in`, data);
-  }
+
 
 }

@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {LoginForm} from '../../../model/login-form';
 import {Router} from '@angular/router';
-import {UserService} from '../../../services/user/user.service';
 import {interval} from 'rxjs';
+import {AuthService} from '../../../config/auth-service';
 
 @Component({
   selector: 'app-login',
@@ -12,7 +12,7 @@ import {interval} from 'rxjs';
 export class LoginComponent implements OnInit {
 
   constructor(private router: Router,
-              private userService: UserService) {
+              private authService: AuthService) {
   }
 
   forgotPassword: boolean;
@@ -24,16 +24,16 @@ export class LoginComponent implements OnInit {
   checkForgotPassword = () => {
     this.forgotPassword = true;
     console.log(this.forgotPassword);
-  };
+  }
 
   authenticate = () => {
     console.log(this.loginForm);
-    this.userService.authentiction(this.loginForm)
+    this.authService.authenticate(this.loginForm)
       .subscribe(
         data => {
           localStorage.setItem('token', data.body.token);
           localStorage.setItem('role', JSON.stringify(data.body.authorities));
-          this.router.navigate(['/index']);
+          this.router.navigate(['dashboard']);
           interval(3000).subscribe(x => {
             location.reload();
           });
@@ -44,5 +44,5 @@ export class LoginComponent implements OnInit {
           console.log(error);
         }
       );
-  };
+  }
 }

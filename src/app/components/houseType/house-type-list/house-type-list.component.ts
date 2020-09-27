@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {HouseTypeService} from '../../../services/houseType/house-type.service';
+import {HouseType} from '../../../entity/house-type';
 
 @Component({
   selector: 'app-house-type-list',
@@ -8,10 +9,11 @@ import {HouseTypeService} from '../../../services/houseType/house-type.service';
 })
 export class HouseTypeListComponent implements OnInit {
 
-  HouseTypes: any;
+  houseTypes: any;
   currentHouseType = null;
   currentIndex = -1;
-  houseType = '';
+  houseType = new HouseType();
+  displayedColumns: string[] = ['id', 'houseTypeName'];
 
   constructor(private houseTypeService: HouseTypeService) {
   }
@@ -24,7 +26,7 @@ export class HouseTypeListComponent implements OnInit {
     this.houseTypeService.getAll()
       .subscribe(
         data => {
-          this.HouseTypes = data;
+          this.houseTypes = data;
           console.log(data);
         },
         error => {
@@ -61,12 +63,17 @@ export class HouseTypeListComponent implements OnInit {
     this.houseTypeService.getByHouseTypeName(this.houseType)
       .subscribe(
         data => {
-          this.HouseTypes = data;
+          this.houseTypes = data;
           console.log(data);
         },
         error => {
           console.log(error);
         }
       );
+  }
+
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.houseTypes.filter = filterValue.trim().toLowerCase();
   }
 }
